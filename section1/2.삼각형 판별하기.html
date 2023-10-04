@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        let largest = a;
+        if (largest < b) {
+          largest = b;
+        }
+
+        if (largest < c) {
+          largest = c;
+        }
+
+        const sum = a + b + c;
+        const isPossible = sum - largest <= largest;
+        if (isPossible) {
+          return "NO";
+        }
+        return "YES";
+      }
+
+      console.log(solution(13, 33, 25));
+    </script>
+  </body>
+</html>
