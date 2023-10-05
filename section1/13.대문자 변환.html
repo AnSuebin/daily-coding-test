@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const stringArray = [...s];
+        const changedArray = stringArray.map((string) => {
+          if (string === string.toUpperCase()) {
+            return string.toLowerCase();
+          }
+          return string.toUpperCase();
+        });
+
+        const answer = changedArray.join("");
+
+        return answer;
+      }
+
+      console.log(solution("StuDY"));
+    </script>
+  </body>
+</html>
