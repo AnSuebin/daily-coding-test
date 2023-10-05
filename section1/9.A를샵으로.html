@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const stringArray = [...s];
+
+        for (let i = 0; i < stringArray.length; i++) {
+          if (stringArray[i] === "A") {
+            stringArray[i] = "#";
+          }
+        }
+
+        const answer = stringArray.join("");
+
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
