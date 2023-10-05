@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const sum = arr.reduce((acc, value) => acc + value);
+
+        let filteredArray;
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            if (sum - arr[i] - arr[j] === 100) {
+              // index를 알때 array에서 지우는 메소드
+              // toSpliced(index, 지우고 싶은 갯수)
+              filteredArray = arr.toSpliced(j, 1).toSpliced(i, 1);
+              return filteredArray;
+            }
+          }
+        }
+      }
+
+      let arr = [22, 7, 21, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
