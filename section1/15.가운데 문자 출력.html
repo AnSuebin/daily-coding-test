@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const sLength = s.length;
+        let middleIndex;
+        if (sLength % 2 === 1) {
+          middleIndex = Math.floor(sLength / 2);
+          return s[middleIndex];
+        }
+
+        middleIndex = sLength / 2 - 1;
+        return `${s[middleIndex]}${s[middleIndex + 1]}`;
+      }
+      console.log(solution("good"));
+    </script>
+  </body>
+</html>
