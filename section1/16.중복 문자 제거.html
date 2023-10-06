@@ -9,6 +9,9 @@
         let answerArray = [s[0]];
 
         for (let i = 1; i < s.length; i++) {
+          // if(s.indexOf(s[i])===i) answer+=s[i];
+          // indexOf를 사용해 s[i]의 값을 찾고 자신이 첫번쨰면 string에 추가
+          // string에 다음 추가할떄 += 사용 가능
           const isInclude = answerArray.includes(s[i]);
           if (!isInclude) {
             answerArray.push(s[i]);
