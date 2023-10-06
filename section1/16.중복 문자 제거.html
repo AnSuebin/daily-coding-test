@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answerArray = [s[0]];
+
+        for (let i = 1; i < s.length; i++) {
+          const isInclude = answerArray.includes(s[i]);
+          if (!isInclude) {
+            answerArray.push(s[i]);
+          }
+        }
+
+        const answer = answerArray.join("");
+
+        return answer;
+      }
+      console.log(solution("ksekkset"));
+    </script>
+  </body>
+</html>
