@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        // isNaN(number)로 사용 가능
+        // if(!isNaN(number)) answer += x
+        const filteredArray = str.match(/\d/g);
+        const answer = filteredArray.join("");
+
+        return +answer;
+      }
+
+      let str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
