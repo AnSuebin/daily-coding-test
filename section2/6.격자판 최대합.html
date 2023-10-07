@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const getSum = (array) => {
+          const sum = array.reduce((a, b) => a + b);
+
+          return sum;
+        };
+        let answer = getSum(arr[0]);
+
+        for (let i = 1; i < arr.length; i++) {
+          let horizonSum = 0;
+          let verticalSum = 0;
+          let diagonalSum = 0;
+
+          for (let j = 0; j < arr.length; j++) {
+            horizonSum += arr[i][j];
+            verticalSum += arr[j][i];
+            diagonalSum += arr[j][j];
+          }
+
+          if (answer < horizonSum) {
+            answer = horizonSum;
+          }
+          if (answer < verticalSum) {
+            answer = verticalSum;
+          }
+          if (answer < diagonalSum) {
+            answer = diagonalSum;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
