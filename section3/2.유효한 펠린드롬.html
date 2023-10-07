@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // 정규표현식 확인
+        // 아예 뒤집어서 확인하고 아니면 false 처리하는 것이 빠름
+        // s=s.toLowerCase().replace(/[^a-z]/g, '');
+        // if(s.split('').reverse().join('')!==s) return "NO";
+        // return answer;
+
+        const filteredArray = s.match(/[a-zA-Z]/g);
+        const halfLength = Math.floor(filteredArray.length / 2);
+
+        for (let i = 0; i < halfLength; i++) {
+          const firstString = filteredArray[i].toUpperCase();
+          const lastString =
+            filteredArray[filteredArray.length - i - 1].toUpperCase();
+
+          if (firstString !== lastString) {
+            return "NO";
+          }
+        }
+
+        return "YES";
+      }
+
+      let str = "found7, time: study; Yduts; emit, 7Dnuof";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
