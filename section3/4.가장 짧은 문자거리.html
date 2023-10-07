@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        // leftArray와 rightArray 따로 구하면서
+        // rightArray의 값을 바로 answer 인덱스로 교체시키는 방법도 있음
+
+        let leftStartArray = [];
+        let rightStartArray = [];
+
+        let answer = [];
+        let count = 0;
+        let rightCount = 0;
+
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === "e") {
+            count = 0;
+            leftStartArray.push(count);
+          } else {
+            count++;
+            leftStartArray.push(count);
+          }
+
+          if (s[s.length - i - 1] === "e") {
+            rightCount = 0;
+            rightStartArray.push(rightCount);
+          } else {
+            rightCount++;
+            rightStartArray.push(rightCount);
+          }
+        }
+
+        // 얕은 복사기 떄문에, reverse되지 않도록 주의!
+        let reverseRightStartArray = [...rightStartArray].reverse();
+
+        for (let j = 0; j < s.length; j++) {
+          if (leftStartArray[j] > reverseRightStartArray[j]) {
+            answer.push(reverseRightStartArray[j]);
+          } else {
+            answer.push(leftStartArray[j]);
+          }
+        }
+
+        return answer;
+      }
+
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
