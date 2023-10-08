@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(money, product) {
+        const sumAll = product.reduce(
+          (sum, array) => sum + array[0] + array[1],
+          0
+        );
+        const sortArray = product.sort((a, b) => b[0] + b[1] - (a[0] + a[1]));
+        const studentAmount = product.length;
+        let answer = 0;
+
+        for (let i = 0; i < studentAmount; i++) {
+          const discountSum = sumAll - sortArray[i][0] / 2;
+          let sortSum = discountSum;
+
+          for (let k = 0; k < studentAmount; k++) {
+            let deleteNum = 0;
+
+            if (i !== k) {
+              deleteNum++;
+              sortSum -= sortArray[k][0] + sortArray[k][1];
+            }
+
+            if (money >= sortSum) {
+              const ableBuyAmount = studentAmount - deleteNum;
+              if (answer < ableBuyAmount) {
+                answer = ableBuyAmount;
+              }
+              break;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, arr));
+    </script>
+  </body>
+</html>
