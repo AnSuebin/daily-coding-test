@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(test) {
+        let answer = 0;
+        const testAmount = test.length;
+        const studentAmount = test[0].length;
+
+        // 다시 한번 고민해보기!
+        for (let i = 1; i <= studentAmount; i++) {
+          for (let k = 1; k <= studentAmount; k++) {
+            let winCount = 0;
+            for (let j = 0; j < testAmount; j++) {
+              let mentorScore = test[j].indexOf(i);
+              let menteeScore = test[j].indexOf(k);
+
+              if (mentorScore < menteeScore) {
+                winCount++;
+              }
+            }
+            if (winCount === testAmount) {
+              answer++;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [3, 4, 1, 2],
+        [4, 3, 2, 1],
+        [3, 1, 4, 2],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
