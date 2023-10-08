@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
+
+        for (let i = 0; i < arr.length; i++) {
+          const splitNumber = arr[i].toString().split("");
+          const reverseNumber = +splitNumber.reverse().join("");
+
+          console.log(reverseNumber);
+
+          let isSelect = true;
+          for (let j = 2; j < reverseNumber; j++) {
+            if (reverseNumber % j === 0) {
+              isSelect = false;
+              break;
+            }
+          }
+
+          if (isSelect && reverseNumber !== 1) {
+            answer.push(reverseNumber);
+          }
+        }
+        return answer;
+      }
+
+      let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
