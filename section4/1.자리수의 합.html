@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        let biggest = 0;
+        let answer = arr[0];
+
+        for (let i = 0; i < arr.length; i++) {
+          const splitArray = arr[i].toString().split("");
+          const sum = +splitArray.reduce((a, b) => Number(a) + Number(b));
+
+          if (biggest === sum && answer < arr[i]) {
+            answer = arr[i];
+          }
+
+          if (biggest < sum) {
+            biggest = sum;
+            answer = arr[i];
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(7, arr));
+    </script>
+  </body>
+</html>
