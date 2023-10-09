@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str1, str2) {
+        let str1Map = new Map();
+        let str2Map = new Map();
+
+        for (let i = 0; i < str1.length; i++) {
+          if (!str1Map.has(str1[i])) {
+            str1Map.set(str1[i], 1);
+          } else {
+            let amount1 = str1Map.get(str1[i]);
+            str1Map.set(str1[i], amount1 + 1);
+          }
+
+          if (!str2Map.has(str2[i])) {
+            str2Map.set(str2[i], 1);
+          } else {
+            let amount2 = str2Map.get(str2[i]);
+            str2Map.set(str2[i], amount2 + 1);
+          }
+        }
+
+        for (const [key, value] of str1Map) {
+          if (str2Map.has(key)) {
+            if (str2Map.get(key) !== value) {
+              return "NO";
+              break;
+            }
+          } else {
+            return "NO";
+            break;
+          }
+        }
+
+        return "YES";
+      }
+
+      let a = "AbaAeCE";
+      let b = "baeeACA";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
