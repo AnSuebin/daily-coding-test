@@ -17,6 +17,8 @@
           for (let j = 0; j < tLength; j++) {
             comparison += s[i + j];
           }
+
+          // 알파벳은 그냥 sort만 해도 가능
           sortComparison = [...comparison].sort().join("");
           if (sortComparison === sortT) {
             answer++;
