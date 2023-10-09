@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(stringParam) {
+        let resultMap = new Map();
+        let mappingArray;
+        let answer;
+        let most;
+
+        // 객체 Map 사용법
+        // let mapping = new Map()
+        // 가지고 있는가 / mapping.has(키값)
+        // 가져와라 / mapping.get(키값)
+        // 넣어라 / mapping.set(키값, 값)
+        // 지워라 / mapping.delete(키값)
+        // 전체를 지워라 / mapping.clear()
+
+        for (let i = 0; i < stringParam.length; i++) {
+          if (!resultMap.has(stringParam[i])) {
+            resultMap.set(stringParam[i], 1);
+          } else {
+            let amount = resultMap.get(stringParam[i]);
+            resultMap.set(stringParam[i], amount + 1);
+          }
+        }
+
+        mappingArray = [...resultMap];
+        answer = mappingArray[0][0];
+        most = mappingArray[0][1];
+        for (const [key, value] of mappingArray) {
+          if (value > most) {
+            answer = key;
+          }
+        }
+
+        return answer;
+      }
+
+      let str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
