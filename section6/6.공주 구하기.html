@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k) {
+        // 큐라는 자료 구조 사용
+        // 먼저 들어간 것이 나중에 나옴
+        let queue = Array.from({ length: n }, (value, index) => index + 1);
+        let answer;
+
+        while (queue.length) {
+          for (let i = 1; i < k; i++) {
+            queue.push(queue.shift());
+          }
+          queue.shift();
+          if (queue.length === 1) {
+            answer = queue.shift();
+          }
+        }
+        return answer;
+      }
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
