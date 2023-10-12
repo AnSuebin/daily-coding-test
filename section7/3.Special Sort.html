@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let minusArray = arr.filter((value) => value < 0);
+        let plusArray = arr.filter((value) => value > 0);
+        let answer = [...minusArray, ...plusArray];
+
+        return answer;
+      }
+
+      let arr = [1, 2, 3, -3, -2, 5, 6, -6];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
