@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        let queue = [...need];
+        let answer;
+
+        for (let i = 0; i < plan.length; i++) {
+          if (plan[i] === queue[0]) {
+            queue.shift();
+          }
+        }
+
+        answer = queue.length === 0 ? "YES" : "NO";
+
+        return answer;
+      }
+
+      let a = "CBA";
+      let b = "ACBDGE";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
