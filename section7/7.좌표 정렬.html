@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [...arr];
+
+        for (let i = 0; i < arr.length; i++) {
+          let index = i;
+          for (let j = i + 1; j < arr.length; j++) {
+            if (answer[index][0] > answer[j][0]) {
+              [answer[index], answer[j]] = [answer[j], answer[index]];
+            } else if (answer[index][0] === answer[j][0]) {
+              if (answer[index][1] > answer[j][1]) {
+                [answer[index], answer[j]] = [answer[j], answer[index]];
+              }
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [
+        [2, 7],
+        [1, 3],
+        [1, 2],
+        [2, 5],
+        [3, 6],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
