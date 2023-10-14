@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(target, arr) {
+        let sortArray = [...arr].sort((a, b) => a - b);
+        let sortArray2 = [...arr].sort((a, b) => a - b);
+        let answer = sortArray.indexOf(target) + 1;
+        let answer2;
+
+        // 이분 검색
+        // 오름 차순으로 정렬 후
+        // 왼쪽부터 검색하는것과 오른쪽부터 검색하는 것의 포인트 (lt, rt)
+        // mid = lt + rt / 2
+        // target이 mid보다 큰지 작은지 같은지 확인
+        // target보다 작다면, 뒤는 날리고
+        // 남은 범위에서 마지막 범위를 rt로 하여 구함
+
+        let lt = 0;
+        let rt = sortArray2.length - 1;
+
+        while (lt <= rt) {
+          let mid = Math.floor((lt + rt) / 2);
+
+          if (sortArray2[mid] === target) {
+            answer2 = mid + 1;
+            break;
+          } else if (sortArray2[mid] > target) {
+            rt === mid - 1;
+          } else {
+            lt === mid + 1;
+          }
+        }
+
+        return answer2;
+      }
+
+      let arr = [23, 87, 65, 12, 57, 32, 99, 81];
+      console.log(solution(32, arr));
+    </script>
+  </body>
+</html>
