@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(times) {
+        // 온시간 과 나간시간을 분리해서 리스트로 정렬 후
+        // 인원 리스트로 체크
+
+        let newArray = [];
+        let sortArray2;
+        let answer2Array = [];
+        let count2 = 0;
+        let answer2 = 0;
+
+        for (const x of times) {
+          newArray.push([x[0], "start"]);
+          newArray.push([x[1], "end"]);
+        }
+
+        sortArray2 = newArray.sort((a, b) => {
+          if (a[0] === b[0]) {
+            return a[1].length - b[1].length;
+          } else {
+            return a[0] - b[0];
+          }
+        });
+
+        console.log(sortArray2);
+
+        for (const y of sortArray2) {
+          if (y[1] === "start") {
+            count2++;
+          } else {
+            count2--;
+          }
+          if (answer2 < count2) {
+            answer2 = count2;
+          }
+        }
+
+        console.log(answer2);
+
+        //------------내가 푼 형태 ---------//
+        let sortArray = [...times].sort((a, b) => {
+          if (a[0] === b[0]) {
+            return a[1] - b[1];
+          } else {
+            return a[0] - b[0];
+          }
+        });
+
+        console.log(sortArray);
+
+        let answerArray = [];
+        let answer = 0;
+        for (let i = 0; i < sortArray.length - 1; i++) {
+          let endTime = sortArray[i][1];
+          let count = 1;
+          for (let j = i + 1; j < sortArray.length; j++) {
+            console.log(endTime, sortArray[j][0]);
+            if (endTime > sortArray[j][0]) {
+              count++;
+            }
+          }
+          answerArray.push(count);
+        }
+
+        for (const x of answerArray) {
+          if (answer < x) {
+            answer = x;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
