@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, songs) {
+        // 이분검색 활용
+        // 답을 mid로 생각하고 중간 값으로 계속 찾아나가는 것
+        // 복잡도가 작아지니까
+
+        // lt로 답이 될 수 있는 array값중 가장 큰 값 설정
+        // rt로 모두 합친 값 설정
+        let lt = Math.max(...songs);
+        let rt = songs.reduce((a, b) => a + b);
+        let answer;
+
+        const count = (songList, capacity) => {
+          let count = 1;
+          let sum = 0;
+          for (const x of songList) {
+            if (sum + x > capacity) {
+              cnt++;
+              sum = x;
+            } else {
+              sum += x;
+            }
+          }
+        };
+
+        // 이분검색은 형태를 외우기
+        while (lt <= rt) {
+          let mid = parseInt(lt + rt / 2);
+          if (count(songs, mid) <= m) {
+            answer = mid;
+            rt = mid - 1;
+          } else {
+            lt = mid + 1;
+          }
+        }
+      }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
