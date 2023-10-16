@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(c, stable) {
+        let sortArray = [...stable].sort((a, b) => a - b);
+
+        // 최대 거리를 이분 검색으로 찾는다
+        let lt = 1;
+        let rt = sortArray[sortArray.length - 1];
+        let answer;
+
+        const getLong = (sortArray, mid) => {
+          let cnt = 1;
+          // 말을 배치한 마구간 좌표
+          let ep = stable[0];
+          for (let i = 1; i < stable.length; i) {
+            if (stable[i] - ep >= c) {
+              cnt++;
+              ep = stable[i];
+            }
+          }
+          return cnt;
+        };
+
+        while (lt <= rt) {
+          // mid는 가장 가까운 두말의 최대 거리
+          let mid = parseInt(lt + rt / 2);
+          if (getLong(stable, mid) >= c) {
+            answer = mid;
+            lt = mid + 1;
+          } else rt = mid - 1;
+        }
+      }
+
+      let arr = [1, 2, 8, 4, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
