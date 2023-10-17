@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        // 재귀함수란 자기가 자기 자신을 호출하는 것
+        // D(3) => D(2) => D(1) ...
+        // 반복함수랑 같음
+        function DFS(L) {
+          // D(0)은 호출되지 않음
+          if (L === 0) {
+            return;
+          } else {
+            // 스택의 자료구조 때문
+            // 1, 2, 3
+            // 아래와 같이 되면, 뒤에는 잠시 대기 상태가됨
+            DFS(L - 1);
+            console.log(L);
+
+            // 3, 2, 1 이고
+            //console.log(L);
+            //DFS(L - 1);
+          }
+        }
+
+        DFS(n);
+      }
+
+      solution(3);
+    </script>
+  </body>
+</html>
