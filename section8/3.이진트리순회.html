@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        // 트리에서 중간 부모를 기준
+        // 전위 순회
+        // > 부 왼 오
+        // 중위 순회
+        // > 왼 부 오
+        // 후위 순회
+        // > 왼 오 부
+
+        let answer;
+        function DFS(v) {
+          if (v > 7) {
+            return;
+          } else {
+            // 전위 순회
+            console.log(v);
+            DFS(v * 2);
+            DFS(v * 2 + 1);
+
+            // 중위 순회
+            // 부모가 나오면 왼쪽자식으로 넘어감
+            DFS(v * 2);
+            console.log(v);
+            DFS(v * 2 + 1);
+
+            // 후위 순회
+            // 부모가 나오면 왼쪽자식으로 넘어감
+            DFS(v * 2);
+            DFS(v * 2 + 1);
+            console.log(v);
+          }
+        }
+
+        DFS(n);
+
+        return answer;
+      }
+
+      console.log(solution(1));
+    </script>
+  </body>
+</html>
