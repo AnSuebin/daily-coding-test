@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        // 항상 트리형태 중요
+        // 체크는 각 레벨에 모든 경우의 수가 있는지 확인하는 것
+        // for문과 다른 것은 m중 For문을 재귀에서 바로 만들 수 있다는 것
+        let answer = [];
+        let temporary = Array.from({ length: m }, () => 0);
+
+        // L이 m중 for문의 단계
+        function DFS(L) {
+          if (L === m) {
+            // 깊은 복사 필수
+            answer.push([...temporary]);
+          } else {
+            // for문을 통해 가닥 수를 돌게함
+            for (let i = 1; i <= n; i++) {
+              temporary[L] = i;
+              DFS(L + 1);
+            }
+          }
+        }
+        DFS(0);
+        return answer;
+      }
+
+      console.log(solution(3, 2));
+    </script>
+  </body>
+</html>
