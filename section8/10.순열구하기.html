@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        let answer = [];
+        let count = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length; j++) {
+            if (j !== i) {
+              let setArray = [arr[j], arr[i]];
+
+              answer.push(setArray);
+              count++;
+            }
+          }
+        }
+
+        answer.sort((a, b) => {
+          if (a[0] === b[0]) {
+            return a[1] - b[1];
+          } else {
+            return a[0] - b[0];
+          }
+        });
+        return answer;
+      }
+
+      let arr = [3, 6, 9];
+      console.log(solution(2, arr));
+    </script>
+  </body>
+</html>
