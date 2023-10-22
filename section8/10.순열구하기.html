@@ -6,28 +6,55 @@
   <body>
     <script>
       function solution(m, arr) {
+        // 재귀 함수로 풀기
+        // 들어간 상황인지 체크하는 array
         let answer = [];
-        let count = 0;
+        let n = arr.length;
 
-        for (let i = 0; i < arr.length; i++) {
-          for (let j = 0; j < arr.length; j++) {
-            if (j !== i) {
-              let setArray = [arr[j], arr[i]];
-
-              answer.push(setArray);
-              count++;
+        let check = Array.from({ length: n }, () => 0);
+        let temporary = Array.from({ length: m }, () => 0);
+        function DFS(L) {
+          if (L === m) {
+          } else {
+            // 가지 수
+            answer.push(temporary.slice());
+            for (let i = 0; i < n; i++) {
+              if (check[i] === 0) {
+                check[i] = 1;
+                temporary[L] = ch[i];
+                DFS(L + 1);
+                // 뒤로 돌아가기 때문에 체크 풀어줌
+                check[i] = 0;
+              }
             }
           }
         }
-
-        answer.sort((a, b) => {
-          if (a[0] === b[0]) {
-            return a[1] - b[1];
-          } else {
-            return a[0] - b[0];
-          }
-        });
+        DFS(0);
         return answer;
+
+        // For문으로 풀기
+        // let answer = [];
+        // let count = 0;
+
+        // for (let i = 0; i < arr.length; i++) {
+        //   for (let j = 0; j < arr.length; j++) {
+        //     if (j !== i) {
+        //       let setArray = [arr[j], arr[i]];
+
+        //       answer.push(setArray);
+        //       count++;
+        //     }
+        //   }
+        // }
+
+        // answer.sort((a, b) => {
+        //   if (a[0] === b[0]) {
+        //     return a[1] - b[1];
+        //   } else {
+        //     return a[0] - b[0];
+        //   }
+        // });
+        // return answer;
       }
 
       let arr = [3, 6, 9];
