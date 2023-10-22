@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, r) {
+        let answer;
+        // 메모이제이션
+        let dy = Array.from(Array(35), () => Array(35).fill(0));
+
+        function DFS(number, right) {
+          if (right === 0 || number === right) {
+            if (dy[n][r] > 0) return dy[n][r];
+            return 1;
+          } else {
+            return (dy[n][r] =
+              DFS(number - 1, right - 1) + DFS(number - 1, right));
+          }
+        }
+
+        answer = DFS(n, r);
+        return answer;
+      }
+
+      console.log(solution(33, 19));
+    </script>
+  </body>
+</html>
