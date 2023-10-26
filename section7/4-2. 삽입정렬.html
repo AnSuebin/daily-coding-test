@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // [삽입 정렬]
+        // 지정 index의 앞부터 순서대로 지정 index와 비교하며
+        // 앞부분부터 비교되며 순서 정렬되는 시스템
+
+        let answer = [...arr];
+
+        for (let i = 1; i < answer.length; i++) {
+          let select = answer[i];
+          // select 앞 부터 0인덱스까지
+          for (let j = i - 1; j >= 0; j--) {
+            const element = array[j];
+            if (answer[j] > select) {
+              // select인덱스랑 바꾸는 것이 아닌 다음 수와 교환
+              answer[j + 1] = answer[j];
+              if (j === 0) {
+                answer[0] = select;
+              }
+            } else {
+              // 작은 것이 발견되면 그자리에서 멈춤
+              // 그리고 그 자리에 select 넣어주기
+              answer[j + 1] = select;
+              break;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [11, 7, 5, 6, 10, 9];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
