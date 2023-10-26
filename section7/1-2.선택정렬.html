@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // [선택 정렬]
+        // 하나의 자리를 선택하여 그 자리 수와 전체를 비교하며 가장 작은 수를 집어넣는 방법
+        // 첫번째에 들어갈 가장 작은 것 찾기 (전체 돌기)
+        // 두번째에 들어갈 두번째 작은 것 찾기
+
+        let answer = [...arr];
+
+        for (let i = 0; i < answer.length - 1; i++) {
+          for (let j = i + 1; j < answer.length; j++) {
+            if (answer[i] > answer[j]) {
+              [answer[i], answer[j]] = [answer[j], answer[i]];
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [13, 5, 11, 7, 23, 15];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
