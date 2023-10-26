@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // [버블 정렬]
+        // 앞뒤를 계속 비교해서
+        // 마지막 자리를 먼저 맞춰나가는 정렬
+        let answer = [...arr];
+
+        for (let i = answer.length; i > 0; i--) {
+          // answer 길이보다 하나 작은 인덱스 -1, +1과 비교하기 때문에 -1
+          for (let j = 0; j < i - 1; j++) {
+            if (answer[j] > answer[j + 1]) {
+              [answer[j], answer[j + 1]] = [answer[j + 1], answer[j]];
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [13, 5, 11, 7, 23, 15];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
