@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(target, arr) {
+        // 오름차순 정렬
+        // 반으로 쪼개가며 검색
+        let sortArray = [...arr].sort((a, b) => a - b);
+        let leftPoint = 1;
+        let rightPoint = sortArray.length - 1;
+        let answer;
+
+        // 마지막 leftPoint와 rightPoint가 동일해 지는 상황까지
+        while (leftPoint <= rightPoint) {
+          let middle = parseInt((leftPoint + rightPoint) / 2);
+          if (target === sortArray[middle]) {
+            // 인덱스라는 것 잊지말기
+            answer = middle + 1;
+            break;
+          } else if (target < sortArray[middle]) {
+            // 하나 작게 내려가도 됨
+            rightPoint = middle - 1;
+          } else {
+            // 하나 크게 올라가도 됨
+            leftPoint = middle + 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [23, 87, 65, 12, 57, 32, 99, 81];
+      console.log(solution(32, arr));
+    </script>
+  </body>
+</html>
