@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(hoseAmount, stable) {
+        let sortArray = stable.sort((a, b) => a - b);
+
+        // 마구간 붙어있는 최대 거리
+        let leftPoint = 1;
+        let rightPoint = sortArray[sortArray.length - 1];
+
+        let answer = 0;
+
+        while (leftPoint <= rightPoint) {
+          let middle = parseInt((leftPoint + rightPoint) / 2);
+
+          let temporaryCount = 1;
+          let temporaryStart = sortArray[0];
+          for (let i = 1; i < sortArray.length; i++) {
+            // 서로의 거리
+            let length = sortArray[i] - temporaryStart;
+
+            // 거리가 최대 거리와 크거나 같다면 count 추가, 비교 start 변경
+            if (length >= middle) {
+              temporaryCount++;
+              temporaryStart = sortArray[i];
+            }
+          }
+
+          if (temporaryCount >= hoseAmount) {
+            answer = Math.max(answer, middle);
+            leftPoint = middle + 1;
+          } else {
+            rightPoint = middle - 1;
+          }
+        }
+        return answer;
+      }
+
+      let arr = [1, 2, 8, 4, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
