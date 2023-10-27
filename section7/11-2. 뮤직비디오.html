@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(dvdAmount, songs) {
+        let max = Math.max(...arr);
+        let sum = arr.reduce((a, b) => a + b);
+        let leftPoint = max;
+        let rightPoint = sum;
+        let answer = 0;
+
+        while (leftPoint <= rightPoint) {
+          let middle = parseInt((leftPoint + rightPoint) / 2);
+          let tempCount = 1;
+          let tempSum = 0;
+
+          for (let i = 0; i < songs.length; i++) {
+            if (tempSum + songs[i] <= middle) {
+              tempSum += songs[i];
+            } else {
+              tempCount++;
+              tempSum = songs[i];
+            }
+          }
+
+          // 제작 갯수가 4일 경우 left를 늘려야함
+          // 제작 갯수가 3혹은 2일경우 right를 줄여 범위를 좁히고, answer를 줘야함
+          if (tempCount > dvdAmount) {
+            leftPoint = middle + 1;
+          } else {
+            answer = middle;
+            rightPoint = middle - 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
