@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(times) {
+        // start, end로 구분하여 한 배열로 숫자 나열
+        const newArray = [];
+        let answer = 0;
+        let temporary = 0;
+
+        for (const [a, b] of times) {
+          newArray.push([a, "start"]);
+          newArray.push([b, "end"]);
+        }
+
+        newArray.sort((a, b) => {
+          if (a[0] === b[0]) {
+            return a[1].length - b[1].length;
+          } else {
+            return a[0] - b[0];
+          }
+        });
+
+        for (let i = 0; i < newArray.length; i++) {
+          if (newArray[i][1] === "start") {
+            temporary++;
+            answer = Math.max(answer, temporary);
+          } else {
+            temporary--;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
