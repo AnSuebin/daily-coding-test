@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = "";
+        const DFS = (L) => {
+          if (L === 0) {
+            return;
+          } else {
+            let remainder = L % 2;
+            let quotient = parseInt(L / 2);
+
+            DFS(quotient);
+            answer += `${remainder}`;
+          }
+        };
+
+        DFS(n);
+        return answer;
+      }
+
+      console.log(solution(11));
+    </script>
+  </body>
+</html>
