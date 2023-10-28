@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        const DFS = (v) => {
+          if (v > 7) {
+            return;
+          } else {
+            // 전위 순회
+            console.log(v);
+            DFS(v * 2);
+            DFs(v * 2 + 1);
+
+            // 전위 순회
+            console.log(v);
+            DFS(v * 2);
+            DFs(v * 2 + 1);
+
+            // 전위 순회
+            console.log(v);
+            DFS(v * 2);
+            DFs(v * 2 + 1);
+          }
+        };
+      }
+
+      console.log(solution(1));
+    </script>
+  </body>
+</html>
