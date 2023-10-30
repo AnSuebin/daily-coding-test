@@ -15,13 +15,14 @@
         let temporary = Array.from({ length: m }, () => 0);
         function DFS(L) {
           if (L === m) {
+            answer.push(temporary.slice());
           } else {
             // 가지 수
-            answer.push(temporary.slice());
+
             for (let i = 0; i < n; i++) {
               if (check[i] === 0) {
                 check[i] = 1;
-                temporary[L] = ch[i];
+                temporary[L] = arr[i];
                 DFS(L + 1);
                 // 뒤로 돌아가기 때문에 체크 풀어줌
                 check[i] = 0;
