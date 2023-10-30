@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = 1;
+
+        const DFS = (L) => {
+          if (L > n) {
+            return;
+          } else {
+            answer *= L;
+            DFS(L + 1);
+          }
+        };
+        DFS(1);
+        return answer;
+      }
+
+      console.log(solution(5));
+    </script>
+  </body>
+</html>
