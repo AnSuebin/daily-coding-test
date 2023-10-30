@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(totalMoney, coinArray) {
+        let answer = Number.MAX_SAFE_INTEGER;
+        let arrayLength = coinArray.arrayLength;
+
+        const DFS = (L, sum) => {
+          // 합이 토탈보다 크거나, 답보다 갯수가 많으면 리턴해줍니다.
+          if (sum > totalMoney || L >= answer) {
+            return;
+          }
+
+          // sum이랑 total값과 같으면 answer에 넣어줍니다.
+          if (sum === totalMoney) {
+            answer = Math.min(answer, L);
+          } else {
+            // 모든 값을 다 가지치기 해줍니다.
+            for (let i = 0; i < arrayLength; i++) {
+              DFS(L + 1, sum + arr[i]);
+            }
+          }
+        };
+
+        DFS(0, 0);
+
+        return answer;
+      }
+
+      let arr = [1, 2, 5];
+      console.log(solution(15, arr));
+    </script>
+  </body>
+</html>
