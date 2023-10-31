@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, r) {
+        let answer;
+        let memo = Array.from(Array(n + 2), () => Array(n + 2).fill(0));
+
+        const DFS = (number, right) => {
+          if (right === 0 || number === right) {
+            if (memo[number][right] > 0) {
+              return memo[number][right];
+            } else {
+              return 1;
+            }
+          } else {
+            memo[number][right] =
+              DFS(number - 1, right - 1) + DFS(number - 1, right);
+            return memo[number][right];
+          }
+        };
+
+        answer = DFS(n, r);
+        return answer;
+      }
+
+      console.log(solution(33, 19));
+    </script>
+  </body>
+</html>
