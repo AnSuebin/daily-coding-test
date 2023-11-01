@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        let answer = [];
+        let current = Array.from({ length: m }, () => 0);
+
+        const DFS = (Level, start) => {
+          if (Level === m) {
+            answer.push([...current]);
+          } else {
+            // 하나씩 앞에서부터 빼면서 돌리기
+            for (let i = start; i <= n; i++) {
+              current[Level] = i;
+              DFS(Level + 1, i + 1);
+            }
+          }
+        };
+
+        // 레벨과 시작수
+        DFS(0, 1);
+        return answer;
+      }
+
+      console.log(solution(4, 2));
+    </script>
+  </body>
+</html>
