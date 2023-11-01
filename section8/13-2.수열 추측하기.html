@@ -47,7 +47,7 @@
               if (check[i] === 0) {
                 check[i] = 1;
                 current[L] = i;
-                DFS(L + 1, sum(combiArray[L] * current[L]));
+                DFS(L + 1, sum + combiArray[L] * current[L]);
                 check[i] = 0;
               }
             }
