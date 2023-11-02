@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        let answer = 0;
+        let graph = Array.from({ length: n + 1 }, () => Array());
+        let check = Array.from({ length: n + 1 }, () => 0);
+
+        // 인접리스트
+        for (const [a, b] of arr) {
+          graph[a].push(b);
+        }
+
+        const DFS = (node) => {
+          if ((node = n)) {
+            answer++;
+          } else {
+            for (let i = 0; i < graph[node].length; i++) {
+              if (check[graph[node][i]] === 0) {
+                check[graph[node][i]] = 1;
+                DFS(graph[node][i]);
+                check[graph[node][i]] = 0;
+              }
+            }
+          }
+        };
+        check[1] = 1;
+        DFS(1);
+      }
+
+      let arr = [
+        [1, 2],
+        [1, 3],
+        [1, 4],
+        [2, 1],
+        [2, 3],
+        [2, 5],
+        [3, 4],
+        [4, 2],
+        [4, 5],
+      ];
+      console.log(solution(5, arr));
+    </script>
+  </body>
+</html>
