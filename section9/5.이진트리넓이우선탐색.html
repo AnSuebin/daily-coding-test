@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution() {
+        // 넓이 우선 탐색
+        // Level을 queue(선입 선출)로 훓어주는 형태
+        // Level 탐색이면서 최단거리를 가는 방법론
+
+        let answer = "";
+        let queue = [];
+        queue.push(1);
+        while (queue.length) {
+          let value = queue.shift();
+          answer += `${value}`;
+
+          for (let nextLevel of [value * 2, value * 2 + 1]) {
+            if (nextLevel > 7) {
+              continue;
+            }
+            queue.push(nextLevel);
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution());
+    </script>
+  </body>
+</html>
