@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(board) {
+        let answer = 0;
+        let n = board.length;
+        // 시계방향
+        let directionX = [-1, -1, 0, 1, 1, 1, 0, -1];
+        let directionY = [0, 1, 1, 1, 0, -1, -1, -1];
+
+        function DFS(x, y) {
+          // 지워버리며 탐색
+          board[x][y] = 0;
+
+          for (let k = 0; k < directionX.length; k++) {
+            let nextX = x + directionX[k];
+            let nextY = y + directionY[k];
+            // 뻣지 못하니 재귀가 알아서 멈춤
+            if (
+              nextX >= 0 &&
+              nextX < n &&
+              nextY >= 0 &&
+              nextY < n &&
+              board[nextX][nextY] === 1
+            ) {
+              DFS(nextX, nextY);
+            }
+          }
+        }
+
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+            if (board[i][j] === 1) {
+              answer++;
+              DFS(i, j);
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [1, 1, 0, 0, 0, 1, 0],
+        [0, 1, 1, 0, 1, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 0, 0],
+        [1, 0, 0, 0, 1, 0, 0],
+        [1, 0, 1, 0, 1, 0, 0],
+      ];
+
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
