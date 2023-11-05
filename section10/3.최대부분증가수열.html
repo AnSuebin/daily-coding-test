@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // dynamic[i]는 arr의 i번째 숫자가 마지막 숫자라 생각한 길이값
+        // 앞에 있을 수 있는 지 확인
+        let dynamic = Array.from({ length: arr.length }, () => 0);
+        let answer = 0;
+        dynamic[0] = 1;
+
+        for (let i = 1; i < arr.length; i++) {
+          let max = 0;
+          for (let j = i - 1; j >= 0; j--) {
+            if (arr[i] > arr[j] && dynamic[j] > max) {
+              max = dynamic[j];
+            }
+          }
+          dynamic[i] = max + 1;
+          answer = Math.max(answer, dynamic[i]);
+        }
+
+        return answer;
+      }
+
+      let arr = [5, 3, 7, 8, 6, 2, 9, 4];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
