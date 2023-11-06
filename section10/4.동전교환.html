@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, coin) {
+        // 가방문제 (냅색)
+        // 큰 수로 초기화
+        let dynamic = Array.from({ length: m + 1 }, () => 1000);
+        // dynamic[i]는 i금액을 거슬러 주는 최소 동전의 갯수
+
+        dynamic[0] = 0;
+
+        for (let i = 0; i < coin.length; i++) {
+          for (let j = coin[i]; j <= m; j++) {
+            dynamic[j] = Math.min(dynamic[j], dynamic[j - coin[i]] + 1);
+          }
+        }
+
+        return dynamic[m];
+      }
+
+      let arr = [1, 2, 5];
+      console.log(solution(15, arr));
+    </script>
+  </body>
+</html>
