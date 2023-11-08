@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let dynamic = Array.from({ length: arr.length }, () => 0);
+        let answer = 0;
+        dynamic[0] = 1;
+
+        for (let current = 0; current < arr.length; current++) {
+          let max = 0;
+          // 자기 자신 바로 전부터 맨 앞까지 돌기
+          // 현재보다 작고, 그중 가장 큰것을 구하여
+          for (let j = current - 1; j >= 0; j--) {
+            if (arr[current] > arr[j] && dynamic[j] > max) {
+              max = dynamic[j];
+            }
+          }
+          // 하나를 더한 값을 넣어준다
+          dynamic[current] = max + 1;
+          answer = Math.max(answer, dynamic[i]);
+        }
+        return answer;
+      }
+
+      let arr = [5, 3, 7, 8, 6, 2, 9, 4];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
