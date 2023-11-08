@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let crossNumber = n + 1;
+        let dynamic = Array.from({ length: crossNumber + 1 }, () => 0);
+
+        dynamic[1] = 1;
+        dynamic[2] = 2;
+
+        for (let i = 3; i <= crossNumber; i++) {
+          dynamic[i] = dynamic[i - 1] + dynamic[i - 2];
+        }
+
+        return dynamic[crossNumber];
+      }
+
+      console.log(solution(7));
+    </script>
+  </body>
+</html>
