@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        let dynamic = Array.from({ length: m + 1 }, () => 0);
+
+        for (let i = 0; i < arr.length; i++) {
+          let score = arr[i][0];
+          let time = arr[i][1];
+
+          for (let j = m; j >= time; j--) {
+            dynamic[j] = Math.max(dynamic[j], dynamic[j - time] + score);
+          }
+        }
+
+        return dynamic[m];
+      }
+
+      let arr = [
+        [10, 5],
+        [25, 12],
+        [15, 8],
+        [6, 3],
+        [7, 4],
+      ];
+      console.log(solution(20, arr));
+    </script>
+  </body>
+</html>

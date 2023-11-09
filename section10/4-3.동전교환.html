@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, coin) {
+        let dynamic = Array.from({ length: m + 1 }, () => 1000);
+
+        dynamic[0] = 0;
+
+        for (let i = 0; i < coin.length; i++) {
+          for (let j = coin[i]; j <= m; j++) {
+            dynamic[j] = Math.min(dynamic[j], dynamic[j - coin[i]] + 1);
+          }
+        }
+
+        return dynamic[m];
+      }
+
+      let arr = [1, 2, 5];
+      console.log(solution(15, arr));
+    </script>
+  </body>
+</html>

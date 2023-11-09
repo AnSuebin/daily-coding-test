@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // 내 수까지 가장 긴 수
+        let dynamic = Array.from({ length: arr.length }, () => 0);
+
+        dynamic[0] = 1;
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i - 1; j >= 0; j--) {
+            if (arr[i] > arr[j]) {
+              dynamic[i] = Math.max(dynamic[i], dynamic[j] + 1);
+            }
+          }
+        }
+
+        return Math.max(...dynamic);
+      }
+
+      let arr = [5, 3, 7, 8, 6, 2, 9, 4];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
