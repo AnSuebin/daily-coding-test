@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(target, arr) {
+        let sortArray = arr.sort((a, b) => a - b);
+        let leftPoint = 0;
+        let rightPoint = sortArray.length - 1;
+        let answer;
+
+        while (leftPoint <= rightPoint) {
+          let middle = parseInt((leftPoint + rightPoint) / 2);
+          if (target === sortArray[middle]) {
+            answer = middle + 1;
+            break;
+          } else if (target < sortArray[middle]) {
+            rightPoint = middle - 1;
+          } else {
+            leftPoint = middle + 1;
+          }
+        }
+        return answer;
+      }
+
+      let arr = [23, 87, 65, 12, 57, 32, 99, 81];
+      console.log(solution(32, arr));
+    </script>
+  </body>
+</html>

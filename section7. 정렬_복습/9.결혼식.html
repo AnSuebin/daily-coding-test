@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(times) {
+        let sortTimes = [];
+        let answer = 0;
+        let current = 0;
+
+        for (const [start, end] of times) {
+          sortTimes.push([start, "start"]);
+          sortTimes.push([end, "end"]);
+        }
+
+        sortTimes.sort((a, b) => {
+          if (a[0] === b[0]) {
+            return a[1].length - b[1].length;
+          } else {
+            return a[0] - b[0];
+          }
+        });
+
+        for (let i = 0; i < sortTimes.length; i++) {
+          if (sortTimes[i][1] === "start") {
+            current++;
+            answer = Math.max(answer, current);
+          } else {
+            current--;
+          }
+        }
+        return answer;
+      }
+
+      let arr = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
