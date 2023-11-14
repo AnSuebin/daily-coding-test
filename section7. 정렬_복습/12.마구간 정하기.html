@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(hoseAmount, stable) {
+        let sortArray = stable.sort((a, b) => a - b);
+
+        let leftPoint = 1;
+        let rightPoint = sortArray[sortArray.length - 1];
+
+        let answer = 0;
+
+        while (leftPoint <= rightPoint) {
+          let middle = parseInt((leftPoint + rightPoint) / 2);
+          let currentCount = 1;
+          let currentStart = sortArray[0];
+          for (let i = 1; i < sortArray.length; i++) {
+            let length = sortArray[i] - currentStart;
+
+            if (length >= middle) {
+              currentCount++;
+              currentStart = sortArray[i];
+            }
+          }
+
+          if (currentCount >= hoseAmount) {
+            answer = Math.max(answer, middle);
+            leftPoint = middle + 1;
+          } else {
+            rightPoint = middle - 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 2, 8, 4, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
