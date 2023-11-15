@@ -8,7 +8,7 @@
       function solution(m, songs) {
         let leftPoint = Math.max(...songs);
         let rightPoint = songs.reduce((a, b) => a + b);
-        let answer;
+        let answer = 0;
 
         const count = (songList, capacity) => {
           let count = 1;
@@ -27,7 +27,7 @@
         while (leftPoint <= rightPoint) {
           let middle = parseInt((leftPoint + rightPoint) / 2);
           if (count(songs, middle) <= m) {
-            answer = middle;
+            answer = Math.max(middle, answer);
             rightPoint = middle - 1;
           } else {
             leftPoint = middle + 1;

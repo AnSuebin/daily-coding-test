@@ -7,14 +7,11 @@
     <script>
       function solution(hoseAmount, stable) {
         let sortArray = stable.sort((a, b) => a - b);
-
         let leftPoint = 1;
         let rightPoint = sortArray[sortArray.length - 1];
-
         let answer = 0;
 
-        while (leftPoint <= rightPoint) {
-          let middle = parseInt((leftPoint + rightPoint) / 2);
+        const count = (middle) => {
           let currentCount = 1;
           let currentStart = sortArray[0];
           for (let i = 1; i < sortArray.length; i++) {
@@ -26,7 +23,13 @@
             }
           }
 
-          if (currentCount >= hoseAmount) {
+          return currentCount;
+        };
+
+        while (leftPoint <= rightPoint) {
+          let middle = parseInt((leftPoint + rightPoint) / 2);
+
+          if (count(middle) >= hoseAmount) {
             answer = Math.max(answer, middle);
             leftPoint = middle + 1;
           } else {
