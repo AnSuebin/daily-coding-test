@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(number) {
+        let answer = [];
+        const DFS = (Level) => {
+          if (Level === 0) {
+            return;
+          } else {
+            DFS(Level - 1);
+            answer.push(Level);
+          }
+        };
+
+        DFS(number);
+        return answer;
+      }
+
+      console.log(solution(11));
+    </script>
+  </body>
+</html>

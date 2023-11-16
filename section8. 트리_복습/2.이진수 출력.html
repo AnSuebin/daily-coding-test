@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(number) {
+        let answer = "";
+        const DFS = (Level) => {
+          if (Level === 0) {
+            return;
+          } else {
+            let remainder = Level % 2;
+            let quotient = parseInt(Level / 2);
+
+            DFS(quotient);
+            answer += `${remainder}`;
+          }
+        };
+
+        DFS(number);
+        return answer;
+      }
+
+      console.log(solution(11));
+    </script>
+  </body>
+</html>
