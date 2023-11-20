@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        let check = Array.from({ length: m }, () => 0);
+        let numberArray = Array.from({ length: n }, (_, index) => index + 1);
+
+        let answer = [];
+
+        const DFS = (L) => {
+          if (L === m) {
+            answer.push([check]);
+          } else {
+            for (const x of numberArray) {
+              check[L] = x;
+              DFS(L + 1);
+            }
+          }
+        };
+
+        DFS(0);
+        return answer;
+      }
+
+      console.log(solution(3, 2));
+    </script>
+  </body>
+</html>

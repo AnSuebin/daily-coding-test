@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(timeLimit, scoreList, timeList) {
+        let check = Array.from({ length: scoreList.length }, () => 0);
+        let answer = 0;
+
+        const DFS = (L) => {
+          if (L === scoreList.length) {
+            let tempTime = 0;
+            let tempScore = 0;
+            for (let i = 0; i < scoreList.length; i++) {
+              if (check[i] === 1) {
+                tempScore += scoreList[i];
+                tempTime += timeList[i];
+              }
+            }
+
+            if (tempTime <= timeLimit && answer < tempScore) {
+              answer = tempScore;
+            }
+          } else {
+            check[L] = 0;
+            DFS(L + 1);
+            check[L] = 1;
+            DFS(L + 1);
+          }
+        };
+
+        DFS(0);
+        return answer;
+      }
+
+      let ps = [10, 25, 15, 6, 7];
+      let pt = [5, 12, 8, 3, 4];
+      console.log(solution(20, ps, pt));
+    </script>
+  </body>
+</html>
