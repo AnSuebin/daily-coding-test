@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(amount, numberArray) {
+        let usedCheck = Array.from({ length: numberArray.length }, () => 0);
+        let check = Array.from({ length: amount }, () => 0);
+        let answer = [];
+
+        const DFS = (L) => {
+          if (L === amount) {
+            answer.push([...check]);
+          } else {
+            for (let i = 0; i < amount.length; i++) {
+              if (check[i] === 0) {
+                check[i] = 1;
+                current[L] = numberArray[i];
+                DFS(L + 1);
+                check[i] = 0;
+              }
+            }
+          }
+        };
+
+        DFS(0);
+        return answer;
+      }
+
+      let arr = [3, 6, 9];
+      console.log(solution(2, arr));
+    </script>
+  </body>
+</html>
