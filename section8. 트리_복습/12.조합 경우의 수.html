@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, r) {
+        let answer;
+        let memo = Array.from({ length: n + 2 }, () => Array(n + 2).fill(0));
+
+        const DFS = (N, R) => {
+          if (R === 0 || N === R) {
+            if (memo[N][R] > 0) {
+              return memo[N][R];
+            } else {
+              return 1;
+            }
+          } else {
+            memo[N][R] = DFS(N - 1, R - 1) + DFS(N - 1, R);
+            return memo[N][R];
+          }
+        };
+
+        answer = DFS(n, r);
+        return answer;
+      }
+
+      console.log(solution(33, 19));
+    </script>
+  </body>
+</html>
